@@ -17,15 +17,15 @@ namespace BlueToothHelper
 			}
 
 			if (!Enum.TryParse(args[0],true,out Action action)) {
-				Console.Error.WriteLine("Unkown Action");
+				Console.Error.WriteLine("Unknown Action");
 				return;
 			}
 
 			if (action == Action.Discover) {
 				Discover();
 			}
-			else if (action == Action.Recieve) {
-				RecieveFiles();
+			else if (action == Action.Receive) {
+				ReceiveFiles();
 			}
 		}
 
@@ -34,14 +34,14 @@ namespace BlueToothHelper
 			Console.WriteLine(""
 				  +"Usage "+nameof(BlueToothHelper)+" (action)"
 				+"\n Actions:"
-				+"\n  Recieve      Wait for files to tranfered from a device then saves them to local files"
+				+"\n  Receive      Wait for files to be transfered from a device then saves them to local files"
 				+"\n  Discover     Show information about all known devices"
 			);
 		}
 
 		enum Action {
 			None = 0,
-			Recieve,
+			Receive,
 			Discover
 		}
 
@@ -93,7 +93,7 @@ namespace BlueToothHelper
 		//	return sb.ToString();
 		//}
 
-		static void RecieveFiles()
+		static void ReceiveFiles()
 		{
 			BluetoothRadio br = BluetoothRadio.PrimaryRadio;
 			if (br == null) {
